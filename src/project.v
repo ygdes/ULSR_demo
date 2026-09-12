@@ -40,11 +40,11 @@ module tt_um_ULSR88 (
   FullAdderSG13 FA(.d1(FA1), .d2(FA2), .d3(FA3), .S(FAS), .C(FAC));
   assign uio_out = {FAC, FAS, 3'b000, DO, 2'b00};
 
-  wire UpdateOut, dn;
-  ULSR_input_ctrl ictl(.SD(SD), .SC(SC), .Update(UpdateOut), .D(DO), .D_N(dn));
+  wire UpdateStrobe, dn;
+  ULSR_input_ctrl ictl(.SD(SD), .SC(SC), .Update(UpdateStrobe), .D(DO), .D_N(dn));
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out = {7'b0000000, UpdateOut};
+  assign uo_out = {7'b0000000, UpdateStrobe};
 
       //ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
 
