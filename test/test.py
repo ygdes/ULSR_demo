@@ -15,12 +15,11 @@ FA3    =  32
 FAS    =  64  # out
 FAC    = 128  # out
 
-#async def reset_state(dut):
-#  dut.rst_n.value = 0
-#  await ClockCycles(dut.clk, 3)
-#  dut.rst_n.value = 1
-#  await ClockCycles(dut.clk, 3)
-
+async def TestFullAdder(dut, f1, f2, f3, fs, fc):
+  dut.uio_in.value = (f1*FA1) + (f2*FA2) + (f3*FA3)
+  await ClockCycles(dut.clk, 3)
+  assert int(dut.uio_out.value[6]) == fs
+  assert int(dut.uio_out.value[7]) == fc
 
 
 @cocotb.test()
@@ -41,6 +40,15 @@ async def test_project(dut):
     dut.rst_n.value = 1
 
     dut._log.info("Test project behavior")
+
+    TestFullAdder(dut, 0, 0, 0, 0, 0)
+    TestFullAdder(dut, 0, 0, 1, 1, 0)
+    TestFullAdder(dut, 0, 1, 0, 1, 0)
+    TestFullAdder(dut, 0, 1, 1, 0, 1)
+    TestFullAdder(dut, 1, 0, 0, 1, 0)
+    TestFullAdder(dut, 1, 0, 1, 0, 1)
+    TestFullAdder(dut, 1, 1, 0, 0, 1)
+    TestFullAdder(dut, 1, 1, 1, 1, 1)
 
     # Set the input values you want to test
     dut.ui_in.value = 20
