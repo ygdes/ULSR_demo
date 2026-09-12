@@ -31,10 +31,10 @@ module tt_um_ULSR88 (
        FA1, FA2, FA3,
        FAS, FAC;
 
-  assign SC  = uio_in[0]; -- clock inputs
+  assign SC  = uio_in[0]; // clock inputs
   assign SD  = uio_in[1];
 
-  assign FA1 = uio_in[3]; -- Full Adder inputs
+  assign FA1 = uio_in[3]; // Full Adder inputs
   assign FA2 = uio_in[4];
   assign FA3 = uio_in[5];
   FullAdderSG13 FA(.d1(FA1), .d2(FA2), .d3(FA3), .S(FAS), .C(FAC));
