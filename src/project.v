@@ -31,8 +31,8 @@ module tt_um_ULSR88 (
        FA1, FA2, FA3,
        FAS, FAC;
 
-  assign SC  = uio_in[0]; // clock inputs
-  assign SD  = uio_in[1];
+  assign SD  = uio_in[0]; // clock inputs
+  assign SC  = uio_in[1];
 
   assign FA1 = uio_in[3]; // Full Adder inputs
   assign FA2 = uio_in[4];
@@ -40,11 +40,11 @@ module tt_um_ULSR88 (
   FullAdderSG13 FA(.d1(FA1), .d2(FA2), .d3(FA3), .S(FAS), .C(FAC));
   assign uio_out = {FAC, FAS, 3'b000, DO, 2'b00};
 
-  wire Update, d, dn;
+  wire Update, dn;
   ULSR_input_ctrl(.SD(SD), .SC(SC), .Update(Update), .D(DO), .D_N(dn));
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out = {7'b00000000, Update};
+  assign uo_out = {7'b000 0000, Update};
 
       //ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
 
