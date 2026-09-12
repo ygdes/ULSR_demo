@@ -43,10 +43,11 @@ module tt_um_ULSR88 (
   wire UpdateStrobe, dn;
   ULSR_input_ctrl ictl(.SD(SD), .SC(SC), .Update(UpdateStrobe), .D(DO), .D_N(dn));
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out = {7'b0000000, UpdateStrobe};
+  wire CaptureStrobe;
+  ULSR_output_ctrl octrl(.SD(SD), .SC(SC), .Capture(CaptureStrobe));
 
-      //ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+  // All output pins must be assigned. If not used, assign to 0.
+  assign uo_out = {6'b000000, CaptureStrobe, UpdateStrobe};
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, dn, 1'b0};
