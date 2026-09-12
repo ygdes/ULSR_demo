@@ -100,13 +100,13 @@ async def test_project(dut):
 
 #  await Update(dut)
   await PulseSD(dut)
-  dut._log.info("Update1: " + str(dut.uo_out.value[0]))
+  dut._log.info("Update1: " + str(dut.uo_out.value))
   await PulseSD(dut)
-  dut._log.info("Update2: " + str(dut.uo_out.value[0]))
+  dut._log.info("Update2: " + str(dut.uo_out.value))
   await PulseSD(dut)
-  dut._log.info("Update3: " + str(dut.uo_out.value[0]))
+  dut._log.info("Update3: " + str(dut.uo_out.value))  # must be 1 !
   await PulseSD(dut)
-  dut._log.info("Update4: " + str(dut.uo_out.value[0]))
+  dut._log.info("Update4: " + str(dut.uo_out.value))
 
 #  # Set the input values you want to test
 #  dut.ui_in.value = 20
