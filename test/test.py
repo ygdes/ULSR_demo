@@ -55,22 +55,25 @@ async def InjectBit(dut, bit):
 
 async def Update(dut):
   await PulseSD(dut)
-  dut._log.info("Update1: " + str(dut.uo_out.value))
+  dut._log.info("Update1: " + str(dut.uo_out.value[0]))
   assert int(dut.uo_out.value[0])==0;
   await PulseSD(dut)
-  dut._log.info("Update2: " + str(dut.uo_out.value))
+  dut._log.info("Update2: " + str(dut.uo_out.value[0]))
   assert int(dut.uo_out.value[0])==0;
   await PulseSD(dut)
-  dut._log.info("Update3: " + str(dut.uo_out.value))  # must be 1 !
+  dut._log.info("Update3: " + str(dut.uo_out.value[0]))  # must be 1 !
   assert int(dut.uo_out.value[0])==1;
   await PulseSD(dut)
-  dut._log.info("Update4: " + str(dut.uo_out.value))
+  dut._log.info("Update4: " + str(dut.uo_out.value[0]))
   assert int(dut.uo_out.value[0])==0;
 
 async def Capture(dut):
   await PulseSC(dut)
+  dut._log.info("Capture1: " + str(dut.uo_out.value[1]))
   await PulseSC(dut)
+  dut._log.info("Capture2: " + str(dut.uo_out.value[1]))
   await PulseSC(dut)
+  dut._log.info("Capture3: " + str(dut.uo_out.value[1]))
 
 
 @cocotb.test()
@@ -103,8 +106,8 @@ async def test_project(dut):
   await TestFullAdder(dut, 1, 1, 1, 1, 1)
 
   await PulseReset(dut)
-#  await PulseSC(dut)  ### just to cleanup the state
   await Update(dut)
+  await Capture(dut)
 
 #  # Set the input values you want to test
 #  dut.ui_in.value = 20
