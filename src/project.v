@@ -16,10 +16,6 @@ module tt_um_ULSR88 (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  wire SD, SC, DO,
-       FA1, FA2, FA3,
-       FAS, FAC;
-
 //  # Bidirectional pins
 //  uio[0]: "SD"
 //  uio[1]: "SC"
@@ -29,14 +25,24 @@ module tt_um_ULSR88 (
 //  uio[5]: "FA3"
 //  uio[6]: "FAC" => out
 //  uio[7]: "FAS" => out
-
   assign uio_oe  = 8'b11000100;
-  assign uio_out = 0;
+
+  wire SD, SC, DO,
+       FA1, FA2, FA3,
+       FAS, FAC;
+
+  assign SC  = uio_in[0]; -- clock inputs
+  assign SD  = uio_in[1];
+
+  assign FA1 = uio_in[3]; -- Full Adder inputs
+  assign FA2 = uio_in[4];
+  assign FA3 = uio_in[5];
+  FullAdderSG13 FA(.d1(FA1), .d2(FA2), .d3(FA3), .S(FAS), .C(FAC));
+  assign uio_out = {FAC, FAS, 3'b000, DO, 2'b00};
 
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, 1'b0};
