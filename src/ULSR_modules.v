@@ -29,24 +29,41 @@ module ULSR_RSFF_in(
   sg13_a21oi_1  rs_pos(.Y(Q  ), .A1(EN), .A2(D_N),                     .B1(Q_N));
 endmodule
 
+// One bit to output
+// area : 3 × 18.144 = 54.432
 module ULSR_out_bit(
     input  wire D,
     input  wire D_N,
-    input  wire S,
     input  wire SD,
     input  wire SC,
-    input  wire capture,
+    input  wire update,
     output wire Dout,
     output wire Q,
     output wire Q_N);
-  wire d1, d1n, dummy;
+  wire t, tn, dummy;
   
-  ULSR_RSFF u1(.D(D),  .D_N(D_N), .EN(SD),       .Q(d1),   .Q_N(d1n));
-  ULSR_RSFF u2(.D(d1), .D_N(d1n), .EN(SC),       .Q(Q),    .Q_N(Q_N));
-  ULSR_RSFF u3(.D(Q),  .D_N(Q_N), .EN(capture),  .Q(Dout), .Q_N(dummy));
+  ULSR_RSFF u1(.D(D), .D_N(D_N), .EN(SD),      .Q(t),    .Q_N(tn));
+  ULSR_RSFF u2(.D(t), .D_N(tn),  .EN(SC),      .Q(Q),    .Q_N(Q_N));
+  ULSR_RSFF u3(.D(Q), .D_N(Q_N), .EN(update),  .Q(Dout), .Q_N(dummy));
 
   wire _unused = &{dummy, 1'b0};
 endmodule
 
-
+// One bit to input :
+// area : 18.144 + 23.5872 = 41.7312  
+module ULSR_in_bit(
+    input  wire D,
+    input  wire D_N,
+    input  wire SD,
+    input  wire SC,
+    input  wire capture,
+    output wire Din,
+    output wire Q,
+    output wire Q_N);
+  wire t, t;
   
+  ULSR_RSFF_in u1(.D(D), .D_N(D_N), .Din(Din), .GET(capture), .EN(SD), .Q(t), .Q_N(tn));
+  ULSR_RSFF    u2(.D(t), .D_N(tn),                            .EN(SC), .Q(Q), .Q_N(Q_N));
+endmodule
+
+// TODO : inout
