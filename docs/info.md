@@ -9,7 +9,7 @@ Shifting one bit requires non-overlapping, alternating pulses on SD and SC.
 
 RESET is performed with pulsing SD and SC in an overlapping sequence.
 
-Capture and Update require slightly more complicated sequences but still usign only SD and SC.
+Capture and Update require slightly more complicated sequences but still use only SD and SC.
 
 ## How fast does it run ?
 
