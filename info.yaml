@@ -49,8 +49,8 @@ pinout:
   uio[3]: "FA1"
   uio[4]: "FA2"
   uio[5]: "FA3"
-  uio[6]: "FAC"
-  uio[7]: "FAS"
+  uio[6]: "FAS"
+  uio[7]: "FAC"
 
 # Do not change!
 yaml_version: 6
