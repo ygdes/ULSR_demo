@@ -70,10 +70,16 @@ async def Update(dut):
 async def Capture(dut):
   await PulseSC(dut)
   dut._log.info("Capture1: " + str(dut.uo_out.value[1]))
+  assert int(dut.uo_out.value[1])==0;
   await PulseSC(dut)
   dut._log.info("Capture2: " + str(dut.uo_out.value[1]))
+  assert int(dut.uo_out.value[1])==0;
   await PulseSC(dut)
   dut._log.info("Capture3: " + str(dut.uo_out.value[1]))
+  assert int(dut.uo_out.value[1])==1;
+  await PulseSC(dut)
+  dut._log.info("Capture3: " + str(dut.uo_out.value[1]))
+  assert int(dut.uo_out.value[1])==0;
 
 
 @cocotb.test()
