@@ -100,3 +100,15 @@ module ULSR_input_ctrl(
   sg13_a22oi_1 a(.A1(SC), .A2(SD), .B1(t2), .B2(D), .Y(t3));  // update : if reset state (=> clear all outputs) or if 3 pulses on SD
   sg13_inv_2   i2(.A(t3), .Y(Update));
 endmodule
+
+
+module ULSR_output_ctrl(
+    input wire SD,
+    input wire SC,
+    output wire Capture);
+  wire t1, t2, t3, t4, SDn;
+  sg13_inv_2   i1(.A(SD), .Y(SDn)); // RESET is active low !
+  sg13_dfrbp_1 DFF1(.Q(t2), .Q_N(t3), .D(t1), .RESET_B(SDn), .CLK(SC));
+  sg13_dfrbp_1 DFF2(.Q(t4), .Q_N(t1), .D(t2), .RESET_B(SDn), .CLK(SC));  // needs 3 pulses on SC to trigger the capture
+  sg13_and2_2 a(.A(t3), .B(t4), .Y(Capture));
+endmodule
