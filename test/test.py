@@ -41,14 +41,14 @@ async def test_project(dut):
 
     dut._log.info("Test project behavior")
 
-    TestFullAdder(dut, 0, 0, 0, 0, 0)
-    TestFullAdder(dut, 0, 0, 1, 1, 0)
-    TestFullAdder(dut, 0, 1, 0, 1, 0)
-    TestFullAdder(dut, 0, 1, 1, 0, 1)
-    TestFullAdder(dut, 1, 0, 0, 1, 0)
-    TestFullAdder(dut, 1, 0, 1, 0, 1)
-    TestFullAdder(dut, 1, 1, 0, 0, 1)
-    TestFullAdder(dut, 1, 1, 1, 1, 1)
+    await TestFullAdder(dut, 0, 0, 0, 0, 0)
+    await TestFullAdder(dut, 0, 0, 1, 1, 0)
+    await TestFullAdder(dut, 0, 1, 0, 1, 0)
+    await TestFullAdder(dut, 0, 1, 1, 0, 1)
+    await TestFullAdder(dut, 1, 0, 0, 1, 0)
+    await TestFullAdder(dut, 1, 0, 1, 0, 1)
+    await TestFullAdder(dut, 1, 1, 0, 0, 1)
+    await TestFullAdder(dut, 1, 1, 1, 1, 1)
 
     # Set the input values you want to test
     dut.ui_in.value = 20
