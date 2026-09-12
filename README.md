@@ -1,6 +1,6 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# ULSR in VHDL on Tiny Tapeout
+# ULSR in Verilog on Tiny Tapeout
 
 ULSR means "Universal Latch-based Shift Register", designed for very small digital designs where a standard JTAG TAP takes too much resources and/or impedes on the DUT's performance. It's another high-density scan chain, tuned for extreme compactness and even fewer pins, at the price of some speed.
 
