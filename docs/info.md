@@ -19,6 +19,19 @@ I have no idea, it's all asynchronous magic. Short chains should reach 10 or 20M
 
 Use some Arduino for example, and play with the clock signals. A sketch will be provided someday.
 
+## Architecture
+
+Below is a diagram with 4 in and 4 out pins (for brevity).
+
+There are 3 main stages :
+
+- data input generator (recreates the missing data in pin's value)
+- output block (somewhat merged with the previous block)
+- input block
+
+![](ULSR-4i-4o.2000.png)
+
+
 ## External hardware
 
 Usually some Arduino or something. Or clean/debounced buttons for manual operation.
