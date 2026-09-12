@@ -92,7 +92,10 @@ module ULSR_input_ctrl(
     output wire Update,
     output wire D,
     output wire D_N);
+  wire t1, t2, t3;
+  sg13cmos5l_dfrbp_1 DFF1(.Q(D),  .Q_N(D_N), .D(D_N), .RESET_B(SC), .CLK(SD));  // SD => output 1, SD SD => output 0
+  sg13cmos5l_dfrbp_1 DFF2(.Q(t2), .Q_N(t1),  .D(t1),  .RESET_B(SC), .CLK(D_N));  // needs 4 pulses on SD to trigger the update
 
-
-    
+  sg13_a22oi_1 a(.A1(SC), .A2(SD), .B1(t2), .B2(D), .Y(t3));  // update : if reset state (=> clear all outputs) or if 3 pulses on SD
+  sg13_inv_2   i(.A(t3), .Y(Update));
 endmodule
