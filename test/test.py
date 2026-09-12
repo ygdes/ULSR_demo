@@ -56,16 +56,16 @@ async def InjectBit(dut, bit):
 async def Update(dut):
   await PulseSD(dut)
   dut._log.info("Update1: " + str(dut.uo_out.value))
-  assert dut.uo_out.value[0] == 0;
+  assert int(dut.uo_out.value[0])==0;
   await PulseSD(dut)
   dut._log.info("Update2: " + str(dut.uo_out.value))
-  assert dut.uo_out.value[0] == 0;
+  assert int(dut.uo_out.value[0])==0;
   await PulseSD(dut)
   dut._log.info("Update3: " + str(dut.uo_out.value))  # must be 1 !
-  assert dut.uo_out.value[0] == 1;
+  assert int(dut.uo_out.value[0])==1;
   await PulseSD(dut)
   dut._log.info("Update4: " + str(dut.uo_out.value))
-  assert dut.uo_out.value[0] == 0;
+  assert int(dut.uo_out.value[0])==0;
 
 async def Capture(dut):
   await PulseSC(dut)
