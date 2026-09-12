@@ -19,6 +19,7 @@ project:
   source_files:
     - "project.v"
     - "FullAdder_sg13.v"
+    - "ULSR_modules.v"
     - "sg13_cells_sg13g2.v" # change to target techno
 
 pinout:
