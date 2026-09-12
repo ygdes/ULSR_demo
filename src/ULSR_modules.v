@@ -92,7 +92,7 @@ module ULSR_input_ctrl(
     output wire Update,
     output wire D,
     output wire D_N);
-  wire t1, t2, t3, t4, t5 SCn;
+  wire t1, t2, t3, t4, t5, SCn;
   sg13_inv_2   i1(.A(SC), .Y(SCn));
   sg13_dfrbp_1 DFF1(.Q(t4), .Q_N(t5), .D(t5), .RESET_B(SCn), .CLK(SD));  // SD => output 1, SD SD => output 0
   sg13_dfrbp_1 DFF2(.Q(t2), .Q_N(t1), .D(t1), .RESET_B(SCn), .CLK(t5));  // needs 4 pulses on SD to trigger the update
