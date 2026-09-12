@@ -48,21 +48,21 @@ async def PulseSC(dut):
   await ClockCycles(dut.clk, 1)
 
 async def InjectBit(dut, bit):
-  PulseSD(dut)
+  await PulseSD(dut)
   if bit==0 :
-    PulseSD(dut)
-  PulseSC(dut)
+    await PulseSD(dut)
+  await PulseSC(dut)
 
 async def Update(dut):
-  PulseSD(dut)
-  PulseSD(dut)
-  PulseSD(dut)
-  PulseSD(dut)
+  await PulseSD(dut)
+  await PulseSD(dut)
+  await PulseSD(dut)
+  await PulseSD(dut)
 
 async def Capture(dut):
-  PulseSC(dut)
-  PulseSC(dut)
-  PulseSC(dut)
+  await PulseSC(dut)
+  await PulseSC(dut)
+  await PulseSC(dut)
 
 
 @cocotb.test()
@@ -94,9 +94,19 @@ async def test_project(dut):
   await TestFullAdder(dut, 1, 1, 0, 0, 1)
   await TestFullAdder(dut, 1, 1, 1, 1, 1)
 
-  await  PulseReset(dut)
+  await PulseReset(dut)
 
+  await PulseSC(dut)
 
+#  await Update(dut)
+  await PulseSD(dut)
+  dut._log.info("Update1: " + str(dut.uo_out.value[0]))
+  await PulseSD(dut)
+  dut._log.info("Update2: " + str(dut.uo_out.value[0]))
+  await PulseSD(dut)
+  dut._log.info("Update3: " + str(dut.uo_out.value[0]))
+  await PulseSD(dut)
+  dut._log.info("Update4: " + str(dut.uo_out.value[0]))
 
 #  # Set the input values you want to test
 #  dut.ui_in.value = 20
