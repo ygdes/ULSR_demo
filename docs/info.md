@@ -17,7 +17,7 @@ I have no idea, it's all asynchronous magic. Short chains should reach 10 or 20M
 
 ## Architecture
 
-Below is an abridged diagram with 4 in and 4 out pins (for brevity). Source : [DTAP2-ULSR on Hackaday.io](https://hackaday.io/project/206055-dtap2-ulsr)
+Below is an abridged diagram with 4 in and 4 out pins (for brevity). Source : [DTAP2-ULSR on Hackaday.io](https://hackaday.io/project/206055-dtap2-ulsr) where transparent latches are replaced by back-fed MUX2 for simulation sake.
 
 There are 3 main stages :
 
