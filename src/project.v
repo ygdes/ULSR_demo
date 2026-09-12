@@ -23,8 +23,8 @@ module tt_um_ULSR88 (
 //  uio[3]: "FA1"
 //  uio[4]: "FA2"
 //  uio[5]: "FA3"
-//  uio[6]: "FAC" => out
-//  uio[7]: "FAS" => out
+//  uio[6]: "FAS" => out
+//  uio[7]: "FAC" => out
   assign uio_oe  = 8'b11000100;
 
   wire SD, SC, DO,
