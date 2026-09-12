@@ -17,10 +17,50 @@ FAC    = 128  # out
 
 async def TestFullAdder(dut, f1, f2, f3, fs, fc):
   dut.uio_in.value = (f1*FA1) + (f2*FA2) + (f3*FA3)
-  await ClockCycles(dut.clk, 3)
+  await ClockCycles(dut.clk, 1)
   dut._log.info(str(f1)+str(f2)+str(f3)+" : "+str(dut.uio_out.value[7])+str(dut.uio_out.value[6]))
   assert int(dut.uio_out.value[6]) == fs
   assert int(dut.uio_out.value[7]) == fc
+
+
+async def PulseReset(dut):
+  dut.uio_in.value = SD
+  await ClockCycles(dut.clk, 1)
+  dut.uio_in.value = SD+SC
+  await ClockCycles(dut.clk, 1)
+  dut.uio_in.value =    SC
+  await ClockCycles(dut.clk, 1)
+  dut.uio_in.value = 0
+  await ClockCycles(dut.clk, 1)
+
+async def PulseSD(dut):
+  dut.uio_in.value = SD
+  await ClockCycles(dut.clk, 1)
+  dut.uio_in.value = 0
+  await ClockCycles(dut.clk, 1)
+
+async def PulseSC(dut):
+  dut.uio_in.value = SC
+  await ClockCycles(dut.clk, 1)
+  dut.uio_in.value = 0
+  await ClockCycles(dut.clk, 1)
+
+async def InjectBit(dut, bit):
+  PulseSD(dut)
+  if bit==0 :
+    PulseSD(dut)
+  PulseSC(dut)
+
+async def Update(dut):
+  PulseSD(dut)
+  PulseSD(dut)
+  PulseSD(dut)
+  PulseSD(dut)
+
+async def Capture(dut):
+  PulseSC(dut)
+  PulseSC(dut)
+  PulseSC(dut)
 
 
 @cocotb.test()
@@ -37,8 +77,9 @@ async def test_project(dut):
   dut.ui_in.value = 0
   dut.uio_in.value = 0
   dut.rst_n.value = 0
-  await ClockCycles(dut.clk, 10)
+  await ClockCycles(dut.clk, 1)
   dut.rst_n.value = 1
+  await ClockCycles(dut.clk, 1)
 
   dut._log.info("Test project behavior")
 
