@@ -1,9 +1,26 @@
-# SPDX-FileCopyrightText: © 2024 Tiny Tapeout
+# SPDX-FileCopyrightText: © 2026 Yann Guidon
 # SPDX-License-Identifier: Apache-2.0
 
 import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
+
+# bidir pins:
+SD     =   1
+SC     =   2
+DO     =   4  # out
+FA1    =   8
+FA2    =  13
+FA3    =  32
+FAS    =  64  # out
+FAC    = 128  # out
+
+#async def reset_state(dut):
+#  dut.rst_n.value = 0
+#  await ClockCycles(dut.clk, 3)
+#  dut.rst_n.value = 1
+#  await ClockCycles(dut.clk, 3)
+
 
 
 @cocotb.test()
