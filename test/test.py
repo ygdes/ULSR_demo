@@ -28,10 +28,12 @@ async def PulseReset(dut):
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = SD+SC
   await ClockCycles(dut.clk, 1)
+  assert dut.uo_out.value == 1 ####### sortie temporaire de "uptdate"
   dut.uio_in.value =    SC
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = 0
   await ClockCycles(dut.clk, 1)
+  assert int(dut.uio_out.value[4]) == 1
 
 async def PulseSD(dut):
   dut.uio_in.value = SD
@@ -91,6 +93,10 @@ async def test_project(dut):
   await TestFullAdder(dut, 1, 0, 1, 0, 1)
   await TestFullAdder(dut, 1, 1, 0, 0, 1)
   await TestFullAdder(dut, 1, 1, 1, 1, 1)
+
+  await  PulseReset(dut)
+
+
 
 #  # Set the input values you want to test
 #  dut.ui_in.value = 20
