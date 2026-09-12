@@ -41,10 +41,10 @@ module tt_um_ULSR88 (
   assign uio_out = {FAC, FAS, 3'b000, DO, 2'b00};
 
   wire UpdateOut, dn;
-  ULSR_input_ctrl(.SD(SD), .SC(SC), .Update(UpdateOut), .D(DO), .D_N(dn));
+  ULSR_input_ctrl ictl(.SD(SD), .SC(SC), .Update(UpdateOut), .D(DO), .D_N(dn));
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out = {7'b000 0000, UpdateOut};
+  assign uo_out = {7'b0000000, UpdateOut};
 
       //ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
 
