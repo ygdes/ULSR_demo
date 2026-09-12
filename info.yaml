@@ -3,7 +3,7 @@ project:
   title:        "ULSR demo"
   author:       "Yann Guidon"
   discord:      "the_yasep"
-  description:  "Ultracompact scan chain"
+  description:  "Ultracompact 2-pin scan chain"
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
