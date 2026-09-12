@@ -110,5 +110,5 @@ module ULSR_output_ctrl(
   sg13_inv_2   i1(.A(SD), .Y(SDn)); // RESET is active low !
   sg13_dfrbp_1 DFF1(.Q(t2), .Q_N(t3), .D(t1), .RESET_B(SDn), .CLK(SC));
   sg13_dfrbp_1 DFF2(.Q(t4), .Q_N(t1), .D(t2), .RESET_B(SDn), .CLK(SC));  // needs 3 pulses on SC to trigger the capture
-  sg13_and2_2 a(.A(t3), .B(t4), .Y(Capture));
+  sg13_and2_2 a(.A(t3), .B(t4), .X(Capture));
 endmodule
