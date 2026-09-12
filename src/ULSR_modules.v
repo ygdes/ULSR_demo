@@ -85,3 +85,14 @@ module ULSR_inout_bit(
   ULSR_RSFF    u2(.D(t), .D_N(tn),                            .EN(SC), .Q(Q), .Q_N(Q_N));
   ULSR_RSFF    u3(.D(Q), .D_N(Q_N),                           .EN(update),  .Q(Dout), .Q_N(dummy));
 endmodule
+
+module ULSR_input_ctrl(
+    input wire SD,
+    input wire SC,
+    output wire Update,
+    output wire D,
+    output wire D_N);
+
+
+    
+endmodule
