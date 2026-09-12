@@ -41,9 +41,9 @@ module ULSR_out_bit(
     output wire Q_N);
   wire d1, d1n, dummy;
   
-  ULSR_RSFF u1(.D(D),  .D_N(D_N), .EN(SD), Q(d1), .Q_N(d1n));
-  ULSR_RSFF u2(.D(d1), .D_N(d1n), .EN(SC), Q(Q),  .Q_N(Q_N));
-  ULSR_RSFF u3(.D(Q),  .D_N(Q_N), .EN(capture),  Q(Dout), .Q_N(dummy));
+  ULSR_RSFF u1(.D(D),  .D_N(D_N), .EN(SD),       .Q(d1),   .Q_N(d1n));
+  ULSR_RSFF u2(.D(d1), .D_N(d1n), .EN(SC),       .Q(Q),    .Q_N(Q_N));
+  ULSR_RSFF u3(.D(Q),  .D_N(Q_N), .EN(capture),  .Q(Dout), .Q_N(dummy));
 
   wire _unused = &{dummy, 1'b0};
 endmodule
