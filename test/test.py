@@ -18,7 +18,7 @@ FAC    = 128  # out
 async def TestFullAdder(dut, f1, f2, f3, fs, fc):
   dut.uio_in.value = (f1*FA1) + (f2*FA2) + (f3*FA3)
   await ClockCycles(dut.clk, 3)
-  dut._log.info(str(f1)+str(f2)+str(f3)+" : "+str(dut.uio_out.value[6])+str(dut.uio_out.value[7]))
+  dut._log.info(str(f1)+str(f2)+str(f3)+" : "+str(dut.uio_out.value[7])+str(dut.uio_out.value[6]))
 #  assert int(dut.uio_out.value[6]) == fs
 #  assert int(dut.uio_out.value[7]) == fc
 
