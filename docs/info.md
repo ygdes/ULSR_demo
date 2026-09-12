@@ -30,7 +30,6 @@ There are 3 main stages :
 
 ## How to test
 
-Use some Arduino for example, and play with the clock signals. A sketch will be provided someday.
+Use some Arduino for example, and play with the clock signals. A sketch will be provided someday, transcribing the code in test/test.py
 
-5 leftover pins are connected to a Full Adder that you can test with the scan chain by connecting extra wires.
-
+5 leftover pins are connected to a Full Adder that you can test with the scan chain through external extra wires.
