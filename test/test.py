@@ -142,21 +142,10 @@ async def test_project(dut):
   # Flush and check (MSB first)
   for i in range(0, 9):
     dut._log.info("flush: i=" + str(i) + "  DO=" + str(dut.uio_out.value[2]))
+    if i==0 | i==3 | i==6 | i==8:
+      assert (dut.uio_out.value[2])==0
+    else:
+      assert (dut.uio_out.value[2])==1
     await InjectBit(dut, 0)
-#    if i==0 | i==3 | i==6 | i==8:
-#      assert (dut.uio_out.value[2])==0
-#    else:
-#      assert (dut.uio_out.value[2])==1
 
-
-
-#  # Set the input values you want to test
-#  dut.ui_in.value = 20
-#  dut.uio_in.value = 30
-
-#  # Wait for one clock cycle to see the output values
-#  await ClockCycles(dut.clk, 1)
-
-#  # The following assersion is just an example of how to check the output values.
-#  # Change it to match the actual expected output of your module:
-#  assert dut.uo_out.value == 50
+  print("seems OK.")
