@@ -67,6 +67,7 @@ module tt_um_ULSR88 (
   assign DO = dp[12];
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, dn[12], 1'b0};
+  wire _unused = &{ena, clk, rst_n, dn[12],
+          uio_in[7], uio_in[6], uio_in[2], 1'b0};
 
 endmodule
