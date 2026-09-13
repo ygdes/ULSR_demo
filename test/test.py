@@ -113,6 +113,8 @@ async def test_project(dut):
 
   await PulseReset(dut)
   await Update(dut)
+
+
   await Capture(dut)
 
 #  # Set the input values you want to test
