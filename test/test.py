@@ -126,7 +126,7 @@ async def test_project(dut):
   # Flush and check the 1 at the output
   for i in range(0, 5):
     await Update(dut)
-    dut._log.info("Inject: " + str(dut.uo_out.value) + "  DO=" + str(dut.uio_out.value[2]))
+    dut._log.info("Inject: " + str(dut.uo_out.value) + "   i=" + str(i) + "  DO=" + str(dut.uio_out.value[2]))
     assert dut.uo_out.value==0;
     await InjectBit(dut, 0)
 
