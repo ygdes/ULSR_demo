@@ -113,12 +113,14 @@ async def test_project(dut):
   await TestFullAdder(dut, 1, 1, 1, 1, 1)
 
   await PulseReset(dut)
+  assert dut.uo_out.value == 0
 
   ## shift a single 1 bit
   await InjectBit(dut, 1)
   for i in range(0, 8):
     await Update(dut)
     dut._log.info("Inject: " + str(dut.uo_out.value))
+    assert int(dut.uo_out.value[i])==1;
     await InjectBit(dut, 0)
 
     
