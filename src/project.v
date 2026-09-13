@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2026 Yann Guidon
  * SPDX-License-Identifier: Apache-2.0
+ *
+ * this is the top level for a 12-bit deep shift register
+ *  with 8 inputs and 8 outpus, minimal control logic and minimal size.
  */
 
 `default_nettype none
