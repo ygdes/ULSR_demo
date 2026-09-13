@@ -29,6 +29,7 @@ async def PulseReset(dut):
   dut.uio_in.value = SD+SC
   await ClockCycles(dut.clk, 1)
 #  assert dut.uo_out.value == 1 ####### sortie temporaire de "uptdate"
+#  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
   dut.uio_in.value =    SC
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = 0
@@ -112,9 +113,15 @@ async def test_project(dut):
   await TestFullAdder(dut, 1, 1, 1, 1, 1)
 
   await PulseReset(dut)
-  await Update(dut)
 
+  ## shift a single 1 bit
+  InjectBit(dut, 1)
+  for i in range(0, 8):
+    await Update(dut)
+    dut._log.info("Inject: " + str(dut.uo_out.value))
+    InjectBit(dut, 0)
 
+    
   await Capture(dut)
 
 #  # Set the input values you want to test
