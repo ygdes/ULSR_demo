@@ -28,13 +28,13 @@ async def PulseReset(dut):
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = SD+SC
   await ClockCycles(dut.clk, 1)
-#  assert dut.uo_out.value == 1 ####### sortie temporaire de "uptdate"
+  assert dut.uo_out.value == 0 ## Reset clears the output registers
 #  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
   dut.uio_in.value =    SC
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = 0
   await ClockCycles(dut.clk, 1)
-#  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
+#  assert int(dut.uio_out.value[2]) == 0  ## output DO should still be 0
 
 async def PulseSD(dut):
   dut.uio_in.value = SD
@@ -69,6 +69,7 @@ async def Update(dut):
 #  assert int(dut.uo_out.value[0])==0;
 
 async def Capture(dut):
+  await PulseReset(dut)  # don't forget to clear the shift register !
   await PulseSC(dut)
 #  dut._log.info("Capture1: " + str(dut.uo_out.value[1]))
 #  assert int(dut.uo_out.value[1])==0;
@@ -113,7 +114,6 @@ async def test_project(dut):
   await TestFullAdder(dut, 1, 1, 1, 1, 1)
 
   await PulseReset(dut)
-  assert dut.uo_out.value == 0
 
   ## shift a single 1 bit
   await InjectBit(dut, 1)
@@ -126,6 +126,8 @@ async def test_project(dut):
   await Update(dut)
   dut._log.info("Inject: " + str(dut.uo_out.value))
   assert dut.uo_out.value==0;
+
+
 
 
   await Capture(dut)
