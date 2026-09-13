@@ -44,14 +44,14 @@ module tt_um_ULSR88 (
   wire [8:0] dp, dn;
   ULSR_input_ctrl ictl(.SD(SD), .SC(SC), .Update(UpdateStrobe), .D(dp[0]), .D_N(dn[0]));
   // output registers:
-  ULSR_out_bit ob0(.D(dp[0]), .D_N(dn[0]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[1]), .Q(dp[1]), .Q_N(dn[1]));
-  ULSR_out_bit ob1(.D(dp[1]), .D_N(dn[1]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[2]), .Q(dp[2]), .Q_N(dn[2]));
-  ULSR_out_bit ob2(.D(dp[2]), .D_N(dn[2]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[3]), .Q(dp[3]), .Q_N(dn[3]));
-  ULSR_out_bit ob3(.D(dp[3]), .D_N(dn[3]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[4]), .Q(dp[4]), .Q_N(dn[4]));
-  ULSR_out_bit ob4(.D(dp[4]), .D_N(dn[4]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[5]), .Q(dp[5]), .Q_N(dn[5]));
-  ULSR_out_bit ob5(.D(dp[5]), .D_N(dn[5]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[6]), .Q(dp[6]), .Q_N(dn[6]));
-  ULSR_out_bit ob6(.D(dp[6]), .D_N(dn[6]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[7]), .Q(dp[7]), .Q_N(dn[7]));
-  ULSR_out_bit ob7(.D(dp[7]), .D_N(dn[7]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[8]), .Q(dp[8]), .Q_N(dn[8]));
+  ULSR_out_bit ob0(.D(dp[0]), .D_N(dn[0]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[0]), .Q(dp[1]), .Q_N(dn[1]));
+  ULSR_out_bit ob1(.D(dp[1]), .D_N(dn[1]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[1]), .Q(dp[2]), .Q_N(dn[2]));
+  ULSR_out_bit ob2(.D(dp[2]), .D_N(dn[2]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[2]), .Q(dp[3]), .Q_N(dn[3]));
+  ULSR_out_bit ob3(.D(dp[3]), .D_N(dn[3]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[3]), .Q(dp[4]), .Q_N(dn[4]));
+  ULSR_out_bit ob4(.D(dp[4]), .D_N(dn[4]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[4]), .Q(dp[5]), .Q_N(dn[5]));
+  ULSR_out_bit ob5(.D(dp[5]), .D_N(dn[5]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[5]), .Q(dp[6]), .Q_N(dn[6]));
+  ULSR_out_bit ob6(.D(dp[6]), .D_N(dn[6]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[6]), .Q(dp[7]), .Q_N(dn[7]));
+  ULSR_out_bit ob7(.D(dp[7]), .D_N(dn[7]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[7]), .Q(dp[8]), .Q_N(dn[8]));
 
 
   wire CaptureStrobe;
