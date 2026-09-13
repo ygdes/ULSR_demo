@@ -51,15 +51,15 @@ module tt_um_ULSR88 (
   ULSR_out_bit ob2(.D(dp[2]), .D_N(dn[2]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[2]), .Q(dp[3]), .Q_N(dn[3]));
   ULSR_out_bit ob3(.D(dp[3]), .D_N(dn[3]), .SD(SD), .SC(SC), .update(UpdateStrobe), .Dout(uo_out[3]), .Q(dp[4]), .Q_N(dn[4]));
   // input/output registers:
-  ULSR_inout_bit iob4(.D(dp[4]), .D_N(dn[4]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .update(UpdateStrobe), .Dout(uo_out[4]), .Q(dp[5]), .Q_N(dn[5]));
-  ULSR_inout_bit iob5(.D(dp[5]), .D_N(dn[5]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .update(UpdateStrobe), .Dout(uo_out[5]), .Q(dp[6]), .Q_N(dn[6]));
-  ULSR_inout_bit iob6(.D(dp[6]), .D_N(dn[6]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .update(UpdateStrobe), .Dout(uo_out[6]), .Q(dp[7]), .Q_N(dn[7]));
-  ULSR_inout_bit iob7(.D(dp[7]), .D_N(dn[7]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .update(UpdateStrobe), .Dout(uo_out[7]), .Q(dp[8]), .Q_N(dn[8]));
+  ULSR_inout_bit iob4(.D(dp[4]), .D_N(dn[4]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[0]), .update(UpdateStrobe), .Dout(uo_out[4]), .Q(dp[5]), .Q_N(dn[5]));
+  ULSR_inout_bit iob5(.D(dp[5]), .D_N(dn[5]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[1]), .update(UpdateStrobe), .Dout(uo_out[5]), .Q(dp[6]), .Q_N(dn[6]));
+  ULSR_inout_bit iob6(.D(dp[6]), .D_N(dn[6]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[2]), .update(UpdateStrobe), .Dout(uo_out[6]), .Q(dp[7]), .Q_N(dn[7]));
+  ULSR_inout_bit iob7(.D(dp[7]), .D_N(dn[7]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[3]), .update(UpdateStrobe), .Dout(uo_out[7]), .Q(dp[8]), .Q_N(dn[8]));
   // input registers:
-  ULSR_in_bit ib8 (.D(dp[ 8]), .D_N(dn[ 8]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .Q(dp[ 9]), .Q_N(dn[ 9]));
-  ULSR_in_bit ib9 (.D(dp[ 9]), .D_N(dn[ 9]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .Q(dp[10]), .Q_N(dn[10]));
-  ULSR_in_bit ib10(.D(dp[10]), .D_N(dn[10]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .Q(dp[11]), .Q_N(dn[11]));
-  ULSR_in_bit ib11(.D(dp[11]), .D_N(dn[11]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[]), .Q(dp[12]), .Q_N(dn[12]));
+  ULSR_in_bit  ib8 (.D(dp[ 8]), .D_N(dn[ 8]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[4]), .Q(dp[ 9]), .Q_N(dn[ 9]));
+  ULSR_in_bit  ib9 (.D(dp[ 9]), .D_N(dn[ 9]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[5]), .Q(dp[10]), .Q_N(dn[10]));
+  ULSR_in_bit  ib10(.D(dp[10]), .D_N(dn[10]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[6]), .Q(dp[11]), .Q_N(dn[11]));
+  ULSR_in_bit  ib11(.D(dp[11]), .D_N(dn[11]), .SD(SD), .SC(SC),  .capture(CaptureStrobe), .Din(ui_in[7]), .Q(dp[12]), .Q_N(dn[12]));
 
   assign DO = dp[12];
 
