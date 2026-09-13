@@ -25,6 +25,8 @@ There are 3 main stages :
 - output block (somewhat merged with the previous block)
 - input block
 
+The actual implementation has 12 bits of depth, with the 4 middle ones being both inputs and outputs.
+
 ![](ULSR-4i-4o.2000.png)
 
 
