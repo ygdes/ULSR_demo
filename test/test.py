@@ -29,7 +29,7 @@ async def PulseReset(dut):
   dut.uio_in.value = SD+SC
   await ClockCycles(dut.clk, 1)
   assert dut.uo_out.value == 0 ## Reset clears the output registers
-#  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
+  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
   dut.uio_in.value =    SC
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = 0
@@ -123,9 +123,11 @@ async def test_project(dut):
     assert int(dut.uo_out.value[i])==1;
     await InjectBit(dut, 0)
 
-  await Update(dut)
-  dut._log.info("Inject: " + str(dut.uo_out.value))
-  assert dut.uo_out.value==0;
+  # Flush and check the 1 at the output
+  for i in range(0, 5):
+    dut._log.info("Inject: " + str(dut.uo_out.value) + "  DO=" + str(dut.uio_out.value[2]))
+    assert dut.uo_out.value==0;
+    await InjectBit(dut, 0)
 
 
 
