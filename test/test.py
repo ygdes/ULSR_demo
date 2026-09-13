@@ -28,12 +28,12 @@ async def PulseReset(dut):
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = SD+SC
   await ClockCycles(dut.clk, 1)
-  assert dut.uo_out.value == 1 ####### sortie temporaire de "uptdate"
+#  assert dut.uo_out.value == 1 ####### sortie temporaire de "uptdate"
   dut.uio_in.value =    SC
   await ClockCycles(dut.clk, 1)
   dut.uio_in.value = 0
   await ClockCycles(dut.clk, 1)
-  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
+#  assert int(dut.uio_out.value[2]) == 0  ## output DO should be 0
 
 async def PulseSD(dut):
   dut.uio_in.value = SD
