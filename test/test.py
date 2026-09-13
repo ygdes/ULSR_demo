@@ -115,7 +115,7 @@ async def test_project(dut):
   await PulseReset(dut)
 
   ## shift a single 1 bit
-  InjectBit(dut, 1)
+  await InjectBit(dut, 1)
   for i in range(0, 8):
     await Update(dut)
     dut._log.info("Inject: " + str(dut.uo_out.value))
