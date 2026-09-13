@@ -119,7 +119,7 @@ async def test_project(dut):
   for i in range(0, 8):
     await Update(dut)
     dut._log.info("Inject: " + str(dut.uo_out.value))
-    InjectBit(dut, 0)
+    await InjectBit(dut, 0)
 
     
   await Capture(dut)
