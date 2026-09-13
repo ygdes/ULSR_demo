@@ -123,7 +123,11 @@ async def test_project(dut):
     assert int(dut.uo_out.value[i])==1;
     await InjectBit(dut, 0)
 
-    
+  await Update(dut)
+  dut._log.info("Inject: " + str(dut.uo_out.value))
+  assert dut.uo_out.value==0;
+
+
   await Capture(dut)
 
 #  # Set the input values you want to test
