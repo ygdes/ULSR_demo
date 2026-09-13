@@ -134,10 +134,21 @@ async def test_project(dut):
       assert (dut.uio_out.value[2])==0
     await InjectBit(dut, 0)
 
-
-
-
+# Trying to capture a value
+  
+  dut.ui_in.value = int('01101101', 2)
   await Capture(dut)
+
+  # Flush and check (MSB first)
+  for i in range(0, 9):
+    await InjectBit(dut, 0)
+    dut._log.info("flush: i=" + str(i) + "  DO=" + str(dut.uio_out.value[2]))
+#    if i==0 | i==3 | i==6 | i==8:
+#      assert (dut.uio_out.value[2])==0
+#    else:
+#      assert (dut.uio_out.value[2])==1
+
+
 
 #  # Set the input values you want to test
 #  dut.ui_in.value = 20
