@@ -130,7 +130,7 @@ async def test_project(dut):
     assert dut.uo_out.value==0;
     if i==3:
       assert (dut.uio_out.value[2])==1
-    else
+    else:
       assert (dut.uio_out.value[2])==0
     await InjectBit(dut, 0)
 
