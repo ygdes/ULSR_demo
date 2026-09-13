@@ -84,6 +84,8 @@ module ULSR_inout_bit(
   ULSR_RSFF_in u1(.D(D), .D_N(D_N), .Din(Din), .GET(capture), .EN(SD), .Q(t), .Q_N(tn));
   ULSR_RSFF    u2(.D(t), .D_N(tn),                            .EN(SC), .Q(Q), .Q_N(Q_N));
   ULSR_RSFF    u3(.D(Q), .D_N(Q_N),                           .EN(update),  .Q(Dout), .Q_N(dummy));
+
+  wire _unused = &{dummy, 1'b0};
 endmodule
 
 module ULSR_input_ctrl(
