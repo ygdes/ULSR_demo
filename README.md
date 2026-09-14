@@ -9,5 +9,6 @@ ULSR means "Universal Latch-based Shift Register", designed for very small digit
 - Evolution of [TinyScanChain](https://github.com/YannGuidon/TinyScanChain)
 - See [Hackaday.io:DTAP2-ULSR](https://hackaday.io/project/206055-dtap2-ulsr) for more detailed info.
 - [Read the (terse) documentation for project](docs/info.md)
+- Intended for tapeout on [Tiny Tapeout IHP26b on SG13G2](https://app.tinytapeout.com/shuttles/ttihp26b)
 - Code somewhat based on [Tiny Tapeout Verilog Project Template](https://github.com/TinyTapeout/ttihp-verilog-template) and [IHP_SG13_cells](https://github.com/YannGuidon/IHP_SG13_cells)
 - [FAQ for TinyTapeout](https://tinytapeout.com/faq/)
