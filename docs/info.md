@@ -39,9 +39,12 @@ For 8 inputs and 8 outputs (including 4 combined in and out)
 * ``` xor2 : 2 ``` Full adder
 * ``` and2 : 1 ``` capture decoder.
 
+Result:
+![](ULSR_3D_inv.png)
+
 Conclusion :
 ``` 112 total cells (excluding fill and tap cells)```
-And it's still bloated by the toolchain with many unwanted buffers, some "constant" cells for the io dir port, some gates for the extra full adder...
+And it's still bloated by the toolchain with many unwanted buffers (the tool tried to optimise for ultimate speed ???), some "constant" cells for the io dir port, some gates for the extra full adder... But can you do something this compact with the JTAG standard?
 
 
 ## How to test
