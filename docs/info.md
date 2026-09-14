@@ -44,11 +44,25 @@ Result:
 
 Conclusion :
 ``` 112 total cells (excluding fill and tap cells)```
-And it's still bloated by the toolchain with many unwanted buffers (the tool tried to optimise for ultimate speed ???), some "constant" cells for the io dir port, some gates for the extra full adder... But can you do something this compact with the JTAG standard?
+And it's still bloated by the toolchain with
+* many unwanted buffers (the tool tried to optimise for ultimate speed despite the design speed set to 1Hz),
+* some "constant" cells (tiehi) for the io dir port,
+* some gates for the extra full adder...
 
+But can you do something this compact with the JTAG standard? And since each bit/stage does not require absolute synchronism or a tight timing, the clock network is relaxed and each register uses less space than a standard DFF.
+
+## Protocol
+
+You can find these operations in the ```test/test.py``` script.
+* RESET is : set SD high, set SC high, set SD low, set SC low.
+* inject a '0' bit in the chain : pulse SD, pulse SD, pulse SC.
+* inject a '0' bit in the chain : pulse SD, pulse SC.
+* Capture : pulse SC 4 times
+* Update : pulse SD 4 times
+A more elaborate protocol can be designed on top of this, for example: addressing specific registers by counting the number of bits injected. Let your imagination go wild!
 
 ## How to test
 
-Use some Arduino for example, and play with the SD/SC signals. A sketch will be provided someday, transcribing the code in test/test.py
+Use some Arduino for example, and play with the SD/SC signals. A sketch will be provided someday, transcribing the code in ```test/test.py```
 
-5 leftover pins are connected to a Full Adder that you can test with the scan chain through external wires. Have fun injecting errors to see if the scan chain can detect them!
+5 leftover pins are connected to a Full Adder that you can test it with the scan chain through external wires. Have fun injecting errors to see if the scan chain can detect them!
