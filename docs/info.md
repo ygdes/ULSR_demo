@@ -29,9 +29,23 @@ The actual implementation has 12 bits of depth, with the 4 middle ones being bot
 
 ![](ULSR-4i-4o.2000.png)
 
+## Cell usage
+
+For 8 inputs and 8 outputs (including 4 combined in and out)
+* ``` a22oi a221oi a21oi :	66 ``` one for the full adder, the rest for the bulk of the scan chain.
+* ``` buf : 35 ``` I never asked for them
+* ``` inv : 4 ``` including one for the full adder
+* ``` dfrbp : 4 ``` for the decoders.
+* ``` xor2 : 2 ``` Full adder
+* ``` and2 : 1 ``` capture decoder.
+
+Conclusion :
+``` 112 total cells (excluding fill and tap cells)```
+And it's still bloated by the toolchain with many unwanted buffers, some "constant" cells for the io dir port, some gates for the extra full adder...
+
 
 ## How to test
 
-Use some Arduino for example, and play with the clock signals. A sketch will be provided someday, transcribing the code in test/test.py
+Use some Arduino for example, and play with the SD/SC signals. A sketch will be provided someday, transcribing the code in test/test.py
 
-5 leftover pins are connected to a Full Adder that you can test with the scan chain through external extra wires.
+5 leftover pins are connected to a Full Adder that you can test with the scan chain through external wires. Have fun injecting errors to see if the scan chain can detect them!
