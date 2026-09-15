@@ -25,7 +25,7 @@ The actual implementation has 12 bits of depth, with the 4 middle ones being bot
 
 ## Structure
 
-The input, output and inout stages are made from 2 or 3 latches, made from standard A21OI and A221OI cells.
+The input, output and inout stages are made from 2 or 3 latches, made from standard A21OI and A221OI cells. They are smaller than a DFF.
 ![](ULSR_cells.2k.png)
 
 ## Cell usage
