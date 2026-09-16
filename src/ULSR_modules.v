@@ -103,7 +103,7 @@ module ULSR_input_ctrl(
   sg13_inv_2   i2(.A(t3), .Y(Update));
 endmodule
 
--- version 2 : asynchrone / chaînée comme ULSR_input_ctrl
+// version 2 : asynchrone / chaînée comme ULSR_input_ctrl
 module ULSR_output_ctrl(
     input wire SD,
     input wire SC,
